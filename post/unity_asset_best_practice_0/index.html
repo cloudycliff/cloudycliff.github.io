@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Opengl_on_mojave - Blog</title>
+  <title>Unity_asset_best_practice_0 - Blog</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="cliff" />
-  <meta name="description" content="Mac上搭建OpenGL开发环境 编译环境 安装xcode，然后在命令行里运行xcode-select --install安装命令行工具 通过bre" />
+  <meta name="description" content="简介 本系列是对unity官方best practices中针对资源管理部分的翻译和自我理解 为避免歧义，一些常用术语还是保留英文原文，如Asse" />
 
 
 
@@ -28,7 +28,7 @@
 <meta name="generator" content="Hugo 0.49.2" />
 
 
-<link rel="canonical" href="https://cloudycliff.github.io/post/opengl_on_mojave/" />
+<link rel="canonical" href="https://cloudycliff.github.io/post/unity_asset_best_practice_0/" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -48,26 +48,26 @@
 
 
 
-<meta property="og:title" content="Opengl_on_mojave" />
-<meta property="og:description" content="Mac上搭建OpenGL开发环境 编译环境 安装xcode，然后在命令行里运行xcode-select --install安装命令行工具 通过bre" />
+<meta property="og:title" content="Unity_asset_best_practice_0" />
+<meta property="og:description" content="简介 本系列是对unity官方best practices中针对资源管理部分的翻译和自我理解 为避免歧义，一些常用术语还是保留英文原文，如Asse" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://cloudycliff.github.io/post/opengl_on_mojave/" /><meta property="article:published_time" content="2018-10-23T14:58:40&#43;08:00"/>
-<meta property="article:modified_time" content="2018-10-23T14:58:40&#43;08:00"/>
+<meta property="og:url" content="https://cloudycliff.github.io/post/unity_asset_best_practice_0/" /><meta property="article:published_time" content="2018-10-23T18:57:23&#43;08:00"/>
+<meta property="article:modified_time" content="2018-10-23T18:57:23&#43;08:00"/>
 
-<meta itemprop="name" content="Opengl_on_mojave">
-<meta itemprop="description" content="Mac上搭建OpenGL开发环境 编译环境 安装xcode，然后在命令行里运行xcode-select --install安装命令行工具 通过bre">
-
-
-<meta itemprop="datePublished" content="2018-10-23T14:58:40&#43;08:00" />
-<meta itemprop="dateModified" content="2018-10-23T14:58:40&#43;08:00" />
-<meta itemprop="wordCount" content="865">
+<meta itemprop="name" content="Unity_asset_best_practice_0">
+<meta itemprop="description" content="简介 本系列是对unity官方best practices中针对资源管理部分的翻译和自我理解 为避免歧义，一些常用术语还是保留英文原文，如Asse">
 
 
+<meta itemprop="datePublished" content="2018-10-23T18:57:23&#43;08:00" />
+<meta itemprop="dateModified" content="2018-10-23T18:57:23&#43;08:00" />
+<meta itemprop="wordCount" content="361">
 
-<meta itemprop="keywords" content="OpenGL," />
+
+
+<meta itemprop="keywords" content="Unity3D," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Opengl_on_mojave"/>
-<meta name="twitter:description" content="Mac上搭建OpenGL开发环境 编译环境 安装xcode，然后在命令行里运行xcode-select --install安装命令行工具 通过bre"/>
+<meta name="twitter:title" content="Unity_asset_best_practice_0"/>
+<meta name="twitter:description" content="简介 本系列是对unity官方best practices中针对资源管理部分的翻译和自我理解 为避免歧义，一些常用术语还是保留英文原文，如Asse"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -130,13 +130,13 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">Opengl_on_mojave</h1>
+      <h1 class="post-title">Unity_asset_best_practice_0</h1>
 
       <div class="post-meta">
         <span class="post-time"> 2018-10-23 </span>
         <div class="post-category">
             
-              <a href="/categories/development/"> development </a>
+              <a href="/categories/translate/"> translate </a>
             
           </div>
         
@@ -152,15 +152,8 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#mac上搭建opengl开发环境">Mac上搭建OpenGL开发环境</a>
-<ul>
-<li><a href="#编译环境">编译环境</a></li>
-<li><a href="#glfw">GLFW</a></li>
-<li><a href="#glad">GLAD</a></li>
-<li><a href="#glm">GLM</a></li>
-<li><a href="#macos-mojave的坑">macOS Mojave的坑</a></li>
-<li><a href="#macos-mojave的坑2">macOS Mojave的坑2</a></li>
-</ul></li>
+<li><a href="#简介">简介</a></li>
+<li><a href="#目录">目录</a></li>
 </ul>
 </nav>
   </div>
@@ -173,73 +166,22 @@
     <div class="post-content">
       
 
-<h1 id="mac上搭建opengl开发环境">Mac上搭建OpenGL开发环境</h1>
+<h1 id="简介">简介</h1>
 
-<h2 id="编译环境">编译环境</h2>
+<p>本系列是对unity官方best practices中针对资源管理部分的翻译和自我理解</p>
 
-<p>安装xcode，然后在命令行里运行<code>xcode-select --install</code>安装命令行工具</p>
+<p>为避免歧义，一些常用术语还是保留英文原文，如Asset、AssetBundle、Object等</p>
 
-<p>通过<code>brew install cmake</code>安装cmake及相关工具</p>
+<p>原文地址 <a href="https://unity3d.com/learn/tutorials/topics/best-practices/guide-assetbundles-and-resources?playlist=30089">A guide to AssetBundles and Resources</a></p>
 
-<h2 id="glfw">GLFW</h2>
+<h1 id="目录">目录</h1>
 
-<p>GLFW是一个开源库，为OpenGL、OpenGL ES等提供了跨平台的窗口、输入事件等的封装，简化了开发流程，使开发者可以集中精力在OpenGL本身的开发上。</p>
-
-<p>首先在官网上下载源码包 <a href="http://www.glfw.org/download.html">下载页</a> 这里使用的是<code>3.2.1</code>版本</p>
-
-<p>解压源码后，使用<code>cmake .</code> <code>make</code> <code>make install</code>编译安装即可</p>
-
-<h2 id="glad">GLAD</h2>
-
-<p>由于OpenGL的实现是由显卡驱动提供的，所以在编译时并不能获取到函数的地址，所以需要在开发时通过函数指针的形式查找并保存这些函数。代码写起来就会很冗长，所以会有很多工具来解决这个问题。</p>
-
-<p>GLAD通过一种web服务的形式解决这个问题 <a href="https://glad.dav1d.de/">官网</a></p>
-
-<p>在网站上，选择API gl Version 3.3以上，Profile选择Core，其他选项暂时使用默认值，然后点击GENERATE，下载生成的压缩包。</p>
-
-<p>把压缩包内的两个文件夹include、src复制到项目目录下。</p>
-
-<h2 id="glm">GLM</h2>
-
-<p>GLM是为OpenGL提供的一套数学库</p>
-
-<p>在<a href="https://github.com/g-truc/glm/tags">GLM的github上</a>下载最新版的源码，这里使用的是<code>0.9.9.2</code>版本</p>
-
-<p>解压后，把压缩包内的glm文件夹复制到项目下即可</p>
-
-<h2 id="macos-mojave的坑">macOS Mojave的坑</h2>
-
-<p>在最新的mac系统上，直接编译项目会报错 <code>fatal error: stdio.h: No such file or directory</code></p>
-
-<p>不知道为啥，xcode 10没有安装<code>/usr/include</code>文件夹，但是提供了一个安装包<code>/Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg</code>，安装以后就好了。。。</p>
-
-<h2 id="macos-mojave的坑2">macOS Mojave的坑2</h2>
-
-<p>看来apple真的是要放弃OpenGL了。。现在程序跑起来会直接黑屏，必须手动移动一下才能真正的渲染，目前不确定是OpenGL库的问题还是glfw的锅。在glfw的github上找到一个 <a href="https://github.com/glfw/glfw/issues/1334">issue</a></p>
-
-<p>目前临时的解决方案，是在渲染的循环中，在渲染一次后手动修改一下窗口位置。。。</p>
-
-<pre><code class="language-c++">
-    bool init = false;
-
-    do {
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
-
-        glfwSwapBuffers(m_pWindow);
-        glfwPollEvents();
-
-        if(!init)
-        {
-            int x,y;
-            glfwGetWindowPos(m_pWindow, &amp;x, &amp;y);
-            glfwSetWindowPos(m_pWindow, x+1, y);
-
-            init = true;
-        }
-    } while (!glfwWindowShouldClose(m_pWindow));
-    
-</code></pre>
+<ul>
+<li><a href="/post/unity_asset_best_practice_1">Assets, Objects and serialization</a> 本章讨论了Unity底层是如何序列化Asset和管理Asset之间的引用的。强烈建议先阅读这一章，因为后续章节的很多术语都来自这里。</li>
+<li><a href="/post/unity_asset_best_practice_2">The Resources folder</a> 本章讨论了内置的Resources API。</li>
+<li><a href="/post/unity_asset_best_practice_3">AssetBundle fundamentals</a> 本章基于第一章，介绍了AssetBundle的原理，讨论了AssetBundle的加载和从AssetBundle中加载Asset。</li>
+<li><a href="/post/unity_asset_best_practice_4">AssetBundle usage patterns</a> 本章是针对AssetBundle的实际应用的一个详细的讨论。包含了如何指定Asset到AssetBundle中，管理加载后的Asset，并讨论了在使用AssetBundle时一些常见的坑。</li>
+</ul>
 
     </div>
 
@@ -263,19 +205,24 @@
     <footer class="post-footer">
       <div class="post-tags">
           
-          <a href="/tags/opengl/">OpenGL</a>
+          <a href="/tags/unity3d/">Unity3D</a>
           
         </div>
 
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/unity_asset_best_practice_0/">
+          <a class="prev" href="/post/unity_asset_best_practice_1/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">Unity_asset_best_practice_0</span>
+            <span class="prev-text nav-default">Unity_asset_best_practice_1</span>
             <span class="prev-text nav-mobile">Prev</span>
           </a>
         
+          <a class="next" href="/post/opengl_on_mojave/">
+            <span class="next-text nav-default">Opengl_on_mojave</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
       </nav>
     </footer>
   </article>

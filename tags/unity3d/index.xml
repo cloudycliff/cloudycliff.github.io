@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Blog</title>
-    <link>https://cloudycliff.github.io/</link>
-    <description>Recent content on Blog</description>
+    <title>Unity3D on Blog</title>
+    <link>https://cloudycliff.github.io/tags/unity3d/</link>
+    <description>Recent content in Unity3D on Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Tue, 23 Oct 2018 18:57:32 +0800</lastBuildDate>
     
-	<atom:link href="https://cloudycliff.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cloudycliff.github.io/tags/unity3d/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -45,15 +45,6 @@
       
       <guid>https://cloudycliff.github.io/post/unity_asset_best_practice_0/</guid>
       <description>简介 本系列是对unity官方best practices中针对资源管理部分的翻译和自我理解 为避免歧义，一些常用术语还是保留英文原文，如Asse</description>
-    </item>
-    
-    <item>
-      <title>Opengl_on_mojave</title>
-      <link>https://cloudycliff.github.io/post/opengl_on_mojave/</link>
-      <pubDate>Tue, 23 Oct 2018 14:58:40 +0800</pubDate>
-      
-      <guid>https://cloudycliff.github.io/post/opengl_on_mojave/</guid>
-      <description>Mac上搭建OpenGL开发环境 编译环境 安装xcode，然后在命令行里运行xcode-select --install安装命令行工具 通过bre</description>
     </item>
     
   </channel>

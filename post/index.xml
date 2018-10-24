@@ -6,10 +6,46 @@
     <description>Recent content in Posts on Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 23 Oct 2018 14:58:40 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 23 Oct 2018 18:57:32 +0800</lastBuildDate>
     
 	<atom:link href="https://cloudycliff.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Unity_asset_best_practice_3</title>
+      <link>https://cloudycliff.github.io/post/unity_asset_best_practice_3/</link>
+      <pubDate>Tue, 23 Oct 2018 18:57:32 +0800</pubDate>
+      
+      <guid>https://cloudycliff.github.io/post/unity_asset_best_practice_3/</guid>
+      <description>AssetBundle基础 本章讨论了AssetBundle。介绍了AssetBundle所基于的基础系统，还有和AssetBundle交互的</description>
+    </item>
+    
+    <item>
+      <title>Unity_asset_best_practice_2</title>
+      <link>https://cloudycliff.github.io/post/unity_asset_best_practice_2/</link>
+      <pubDate>Tue, 23 Oct 2018 18:57:29 +0800</pubDate>
+      
+      <guid>https://cloudycliff.github.io/post/unity_asset_best_practice_2/</guid>
+      <description>Resources目录 本章讨论了Resources系统。这个系统允许开发者在一个或多个Resources目录下存储资源，并能通过Resour</description>
+    </item>
+    
+    <item>
+      <title>Unity_asset_best_practice_1</title>
+      <link>https://cloudycliff.github.io/post/unity_asset_best_practice_1/</link>
+      <pubDate>Tue, 23 Oct 2018 18:57:27 +0800</pubDate>
+      
+      <guid>https://cloudycliff.github.io/post/unity_asset_best_practice_1/</guid>
+      <description>Assets，Objects和序列化 本章讲解了Unity序列化系统的深层实现，以及Unity如何在Editor和运行时保持不同Objects</description>
+    </item>
+    
+    <item>
+      <title>Unity_asset_best_practice_0</title>
+      <link>https://cloudycliff.github.io/post/unity_asset_best_practice_0/</link>
+      <pubDate>Tue, 23 Oct 2018 18:57:23 +0800</pubDate>
+      
+      <guid>https://cloudycliff.github.io/post/unity_asset_best_practice_0/</guid>
+      <description>简介 本系列是对unity官方best practices中针对资源管理部分的翻译和自我理解 为避免歧义，一些常用术语还是保留英文原文，如Asse</description>
+    </item>
     
     <item>
       <title>Opengl_on_mojave</title>
