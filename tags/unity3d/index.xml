@@ -6,10 +6,19 @@
     <description>Recent content in Unity3D on Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 23 Oct 2018 18:57:32 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 27 Oct 2018 14:16:26 +0800</lastBuildDate>
     
 	<atom:link href="https://cloudycliff.github.io/tags/unity3d/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Unity_asset_best_practice_4</title>
+      <link>https://cloudycliff.github.io/post/unity_asset_best_practice_4/</link>
+      <pubDate>Sat, 27 Oct 2018 14:16:26 +0800</pubDate>
+      
+      <guid>https://cloudycliff.github.io/post/unity_asset_best_practice_4/</guid>
+      <description>本篇是对Unity官方最佳实践的翻译，原文地址https://unity3d.com/learn/tutorials/topics/best</description>
+    </item>
     
     <item>
       <title>Unity_asset_best_practice_3</title>
