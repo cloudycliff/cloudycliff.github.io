@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="cliff" />
-  <meta name="description" content="AssetBundle基础 本章讨论了AssetBundle。介绍了AssetBundle所基于的基础系统，还有和AssetBundle交互的" />
+  <meta name="description" content="本篇是对Unity官方最佳实践的翻译，原文地址https://unity3d.com/learn/tutorials/topics/best" />
 
 
 
@@ -49,25 +49,25 @@
 
 
 <meta property="og:title" content="Unity_asset_best_practice_3" />
-<meta property="og:description" content="AssetBundle基础 本章讨论了AssetBundle。介绍了AssetBundle所基于的基础系统，还有和AssetBundle交互的" />
+<meta property="og:description" content="本篇是对Unity官方最佳实践的翻译，原文地址https://unity3d.com/learn/tutorials/topics/best" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://cloudycliff.github.io/post/unity_asset_best_practice_3/" /><meta property="article:published_time" content="2018-10-23T18:57:32&#43;08:00"/>
 <meta property="article:modified_time" content="2018-10-23T18:57:32&#43;08:00"/>
 
 <meta itemprop="name" content="Unity_asset_best_practice_3">
-<meta itemprop="description" content="AssetBundle基础 本章讨论了AssetBundle。介绍了AssetBundle所基于的基础系统，还有和AssetBundle交互的">
+<meta itemprop="description" content="本篇是对Unity官方最佳实践的翻译，原文地址https://unity3d.com/learn/tutorials/topics/best">
 
 
 <meta itemprop="datePublished" content="2018-10-23T18:57:32&#43;08:00" />
 <meta itemprop="dateModified" content="2018-10-23T18:57:32&#43;08:00" />
-<meta itemprop="wordCount" content="6933">
+<meta itemprop="wordCount" content="7035">
 
 
 
 <meta itemprop="keywords" content="Unity3D," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Unity_asset_best_practice_3"/>
-<meta name="twitter:description" content="AssetBundle基础 本章讨论了AssetBundle。介绍了AssetBundle所基于的基础系统，还有和AssetBundle交互的"/>
+<meta name="twitter:description" content="本篇是对Unity官方最佳实践的翻译，原文地址https://unity3d.com/learn/tutorials/topics/best"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -184,6 +184,10 @@
     <div class="post-content">
       
 
+<blockquote>
+<p>本篇是对Unity官方最佳实践的翻译，原文地址<a href="https://unity3d.com/learn/tutorials/topics/best-practices/assetbundle-fundamentals">https://unity3d.com/learn/tutorials/topics/best-practices/assetbundle-fundamentals</a></p>
+</blockquote>
+
 <h1 id="assetbundle基础">AssetBundle基础</h1>
 
 <p>本章讨论了AssetBundle。介绍了AssetBundle所基于的基础系统，还有和AssetBundle交互的核心API。详细来说，讨论了加载和卸载AssetBundle本身，以及加载和卸载AssetBundle中特定的Asset和Object。</p>
@@ -192,7 +196,7 @@
 
 <p>AssetBundle系统提供了一种Unity可以索引和序列化的，把多个文件存储到一个归档格式的方法。AssetBundle是Unity在应用安装后投递和更新非代码内容的主要工具。这允许开发者提交一个小的应用包，最小化运行时内存压力，根据用户设备有选择的加载最优的资源。</p>
 
-<p>理解AssetBundle的工作原理是为移动设备构建成功项目的关键。可以通过<a href="https://docs.unity3d.com/Manual/AssetBundlesIntro.html?_ga=2.126189709.184694638.1540294356-812634850.1540294356">AssetBundle文档</a>获取关于AssetBundle的整体描述。</p>
+<p>理解AssetBundle的工作原理是为移动设备构建成功项目的关键。可以通过<a href="https://docs.unity3d.com/Manual/AssetBundlesIntro.html">AssetBundle文档</a>获取关于AssetBundle的整体描述。</p>
 
 <h2 id="3-2-assetbundle布局">3.2 AssetBundle布局</h2>
 
@@ -276,7 +280,7 @@
 
 <p>通常情况下，应该尽量使用<code>AssetBundle.LoadFromFile</code>。这个API在速度、硬盘使用和运行时内存占用都是最高效的。</p>
 
-<p>对于需要下载和更新AssetBundle的项目，强烈推荐使用UnityWebRequest（Unity 5.3以后）或WWW.LoadFromCacheOrDownload（Unity 5.2之前）。下一章中会详细讲到，it is possible to prime the AssetBundle Cache with Bundles included within a project&rsquo;s installer（TODO：恕我真的没看懂。。等看到下一章相关章节再看看。。）</p>
+<p>对于需要下载和更新AssetBundle的项目，强烈推荐使用UnityWebRequest（Unity 5.3以后）或WWW.LoadFromCacheOrDownload（Unity 5.2之前）。下一章的发布段落中会详细讲到，即使AssetBundle是随项目安装包一起安装的，也可以提前预热AssetBundle缓存。</p>
 
 <p>在使用<code>UnityWebRequest</code>或<code>WWW.LoadFromCacheOrDownload</code>时，要保证在加载AssetBundle后正确的调用了<code>Dispose</code>方法。另外，C#的using语句可以很方便的保证WWW或UnityWebRequest被正确的dispose了。</p>
 
@@ -341,7 +345,7 @@
 
 <p>然而，当AssetBundle 1被加载时，Unity不会自动加载AssetBundle 2。这必须通过脚本手动的去实现。</p>
 
-<p>可以参考<a href="https://docs.unity3d.com/Manual/AssetBundles-Dependencies.html?_ga=2.148172343.184694638.1540294356-812634850.1540294356">manual</a>来获取关于AssetBundle依赖的更多信息。</p>
+<p>可以参考<a href="https://docs.unity3d.com/Manual/AssetBundles-Dependencies.html">manual</a>来获取关于AssetBundle依赖的更多信息。</p>
 
 <h3 id="3-4-3-assetbundle-manifest文件">3.4.3 AssetBundle manifest文件</h3>
 
@@ -362,7 +366,7 @@
 
 <h3 id="3-4-4-建议">3.4.4 建议</h3>
 
-<p>大部分情况下，在玩家进入性能关键区（主游戏关卡或世界）之前，应该尽可能的加载需要用到的资源。这在移动平台上尤其重要，因为访问本地存储很慢，而且加载和卸载Objects引起的内存波动会出发垃圾回收。</p>
+<p>大部分情况下，在玩家进入性能关键区（主游戏关卡或世界）之前，应该尽可能的加载需要用到的资源。这在移动平台上尤其重要，因为访问本地存储很慢，而且加载和卸载Objects引起的内存波动会触发垃圾回收。</p>
 
 <p>如果项目需要在应用可交互阶段加载和卸载Objects，可以参考在下一篇文章中的管理加载后的资源中，对如何卸载Objects和AssetBundles的信息。</p>
 
@@ -395,6 +399,11 @@
       
       <nav class="post-nav">
         
+          <a class="prev" href="/post/unity_asset_best_practice_4/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Unity_asset_best_practice_4</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
         
           <a class="next" href="/post/unity_asset_best_practice_2/">
             <span class="next-text nav-default">Unity_asset_best_practice_2</span>

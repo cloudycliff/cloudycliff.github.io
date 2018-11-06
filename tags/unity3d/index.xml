@@ -17,7 +17,7 @@
       <pubDate>Tue, 23 Oct 2018 18:57:32 +0800</pubDate>
       
       <guid>https://cloudycliff.github.io/post/unity_asset_best_practice_3/</guid>
-      <description>AssetBundle基础 本章讨论了AssetBundle。介绍了AssetBundle所基于的基础系统，还有和AssetBundle交互的</description>
+      <description>本篇是对Unity官方最佳实践的翻译，原文地址https://unity3d.com/learn/tutorials/topics/best</description>
     </item>
     
     <item>
@@ -26,7 +26,7 @@
       <pubDate>Tue, 23 Oct 2018 18:57:29 +0800</pubDate>
       
       <guid>https://cloudycliff.github.io/post/unity_asset_best_practice_2/</guid>
-      <description>Resources目录 本章讨论了Resources系统。这个系统允许开发者在一个或多个Resources目录下存储资源，并能通过Resour</description>
+      <description>本篇是对Unity官方最佳实践的翻译，原文地址https://unity3d.com/learn/tutorials/topics/best</description>
     </item>
     
     <item>
@@ -35,7 +35,7 @@
       <pubDate>Tue, 23 Oct 2018 18:57:27 +0800</pubDate>
       
       <guid>https://cloudycliff.github.io/post/unity_asset_best_practice_1/</guid>
-      <description>Assets，Objects和序列化 本章讲解了Unity序列化系统的深层实现，以及Unity如何在Editor和运行时保持不同Objects</description>
+      <description>本篇是对Unity官方最佳实践的翻译，原文地址https://unity3d.com/learn/tutorials/topics/best</description>
     </item>
     
     <item>
