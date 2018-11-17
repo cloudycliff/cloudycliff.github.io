@@ -3,6 +3,48 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://cloudycliff.github.io/post/unity_optimization_5/</loc>
+    <lastmod>2018-11-16T20:54:02+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudycliff.github.io/post/unity_optimization_4/</loc>
+    <lastmod>2018-11-16T17:40:09+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudycliff.github.io/post/unity_optimization_3/</loc>
+    <lastmod>2018-11-16T15:30:08+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudycliff.github.io/post/unity_optimization_2/</loc>
+    <lastmod>2018-11-16T09:52:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudycliff.github.io/post/unity_optimization_1/</loc>
+    <lastmod>2018-11-15T15:59:57+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://cloudycliff.github.io/post/unity_optimization_0/</loc>
+    <lastmod>2018-11-15T15:39:31+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://cloudycliff.github.io/post/unity_asset_best_practice_4/</loc>
     <lastmod>2018-10-27T14:16:26+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -46,7 +88,7 @@
   
   <url>
     <loc>https://cloudycliff.github.io/</loc>
-    <lastmod>2018-10-27T14:16:26+08:00</lastmod>
+    <lastmod>2018-11-16T20:54:02+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -66,7 +108,7 @@
   
   <url>
     <loc>https://cloudycliff.github.io/post/</loc>
-    <lastmod>2018-10-27T14:16:26+08:00</lastmod>
+    <lastmod>2018-11-16T20:54:02+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -80,7 +122,7 @@
   
   <url>
     <loc>https://cloudycliff.github.io/tags/unity3d/</loc>
-    <lastmod>2018-10-27T14:16:26+08:00</lastmod>
+    <lastmod>2018-11-16T20:54:02+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -94,7 +136,7 @@
   
   <url>
     <loc>https://cloudycliff.github.io/categories/translate/</loc>
-    <lastmod>2018-10-27T14:16:26+08:00</lastmod>
+    <lastmod>2018-11-16T20:54:02+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>

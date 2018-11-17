@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Unity_optimization_3 - Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="cliff" />
+  <meta name="description" content="本篇是对Unity官方最佳实践的翻译，原文地址 协程 协程有着和其他脚本代码不同的执行方式。大部分脚本代码只会出现在性能追踪的一个地方，在某个特" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.49.2" />
+
+
+<link rel="canonical" href="https://cloudycliff.github.io/post/unity_optimization_3/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="Unity_optimization_3" />
+<meta property="og:description" content="本篇是对Unity官方最佳实践的翻译，原文地址 协程 协程有着和其他脚本代码不同的执行方式。大部分脚本代码只会出现在性能追踪的一个地方，在某个特" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cloudycliff.github.io/post/unity_optimization_3/" /><meta property="article:published_time" content="2018-11-16T15:30:08&#43;08:00"/>
+<meta property="article:modified_time" content="2018-11-16T15:30:08&#43;08:00"/>
+
+<meta itemprop="name" content="Unity_optimization_3">
+<meta itemprop="description" content="本篇是对Unity官方最佳实践的翻译，原文地址 协程 协程有着和其他脚本代码不同的执行方式。大部分脚本代码只会出现在性能追踪的一个地方，在某个特">
+
+
+<meta itemprop="datePublished" content="2018-11-16T15:30:08&#43;08:00" />
+<meta itemprop="dateModified" content="2018-11-16T15:30:08&#43;08:00" />
+<meta itemprop="wordCount" content="1202">
+
+
+
+<meta itemprop="keywords" content="Unity3D," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Unity_optimization_3"/>
+<meta name="twitter:description" content="本篇是对Unity官方最佳实践的翻译，原文地址 协程 协程有着和其他脚本代码不同的执行方式。大部分脚本代码只会出现在性能追踪的一个地方，在某个特"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Unity_optimization_3</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-11-16 </span>
+        <div class="post-category">
+            
+              <a href="/categories/translate/"> translate </a>
+            
+          </div>
+        
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#协程">协程</a></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      
+
+<blockquote>
+<p>本篇是对Unity官方最佳实践的翻译，<a href="https://docs.unity3d.com/Manual/BestPracticeUnderstandingPerformanceInUnity3.html">原文地址</a></p>
+</blockquote>
+
+<h1 id="协程">协程</h1>
+
+<p>协程有着和其他脚本代码不同的执行方式。大部分脚本代码只会出现在性能追踪的一个地方，在某个特定的Unity回调执行之下。然而，协程的执行总是出现在两个地方。</p>
+
+<p>一个协程的初始代码，从协程的启动直到它第一次yield，会出现在协程启动的地方。通常，它表现在<code>StartCoroutine</code>方法调用的地方。通过Unity回调产生的协程（如返回一个<code>IEnumerator</code>的<code>Start</code>回调）会第一次出现在它们对应的Unity回调中。</p>
+
+<p>协程的所有其他代码-从它第一次恢复直到它完成执行-都出现在Unity主循环中的<code>DelayedCallManager</code>中。</p>
+
+<p>为了理解为什么会有这种现象，要考虑线程是如何被实际执行的。</p>
+
+<p>协程是由C#编译器自动生成的一个类的实例来支持的。虽然对程序员来说协程只是一个方法，需要用这个对象来追踪协程在多次执行过程中的状态。因为协程本地作用域的变量必须在<code>yield</code>调用之间保持有效，这些本地作用域变量会被挂到生成的类中，因此会在协程的执行过程中仍然在堆中保持分配状态。这个对象也追踪协程的内部状态：它记录了协程在yield之后必须在代码里的那一点恢复执行。</p>
+
+<p>因为这个，启动一个协程的内存压力等于一个固定的占用加上它本地作用域变量的大小。</p>
+
+<p>启动一个线程的代码创建并执行这个对象，然后Unity的<code>DelayedCallManager</code>会在协程的yield条件满足时再次执行它。由于协程通常开始于其他协程之外，这会把它们的执行拆分到上面描述的两个地方中。</p>
+
+<p><img src="/img/UnderstandingPerformanceinUnity-CoroutinesSection_image_0.jpg" alt="image0" /></p>
+
+<p>这可以通过上面的截图来观察到，<code>DelayedCallManager</code>恢复执行了多个不同的协程：<code>PopulateCharacters</code>，<code>AsyncLoad</code>和<code>LoadDatabase</code>。</p>
+
+<p>如果可能，最好把一系列操作压缩到最少数量的独立协程中。虽然嵌套协程对于代码的清晰度和可维护度很有帮助，它们会产生更高的内存占用，因为会产生协程追踪对象。</p>
+
+<p>如果一个协程几乎每帧都会执行且在长期操作中不会yield，把它替换成<code>Update</code>或<code>LateUpdate</code>回调通常会更加可读。对于长时间执行或无限循环协程更是如此。</p>
+
+<p>当一个object被disabled时，协程不会被停止，只有在object被明确的destroy时才会停止。这允许协程保持执行，如果需要的话，也可以再次enable这个object。调用<code>Destroy(this)</code>会立刻触发<code>OnDisable</code>，且协程会被处理。最后，<code>OnDestroy</code>会在帧结束的时候被执行。（译注：这段感觉说的乱七八糟。。大概就是说disable不会停止协程，只有destroy才会停。。）</p>
+
+<p>要记住协程不是线程。在协程中执行的同步操作仍然会运行在主线程上。如果目标是要减少主线程上CPU时间的占用，在协程中同样需要注意避免阻塞操作。</p>
+
+<p>协程最好被用来处理长时间的异步操作，如等待HTTP传输，资源加载或文件I/O等。</p>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">cliff</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2018-11-16</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/unity3d/">Unity3D</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/unity_optimization_4/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Unity_optimization_4</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+          <a class="next" href="/post/unity_optimization_2/">
+            <span class="next-text nav-default">Unity_optimization_2</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="https://cloudycliff.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">cliff</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

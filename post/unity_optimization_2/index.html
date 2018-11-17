@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Unity_optimization_2 - Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="cliff" />
+  <meta name="description" content="本篇是对Unity官方最佳实践的翻译，原文地址 本篇中提到的工具，好像已经有一段时间没有维护过了。。不确定现在的版本是否还能继续使用，也不确定" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.49.2" />
+
+
+<link rel="canonical" href="https://cloudycliff.github.io/post/unity_optimization_2/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="Unity_optimization_2" />
+<meta property="og:description" content="本篇是对Unity官方最佳实践的翻译，原文地址 本篇中提到的工具，好像已经有一段时间没有维护过了。。不确定现在的版本是否还能继续使用，也不确定" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cloudycliff.github.io/post/unity_optimization_2/" /><meta property="article:published_time" content="2018-11-16T09:52:00&#43;08:00"/>
+<meta property="article:modified_time" content="2018-11-16T09:52:00&#43;08:00"/>
+
+<meta itemprop="name" content="Unity_optimization_2">
+<meta itemprop="description" content="本篇是对Unity官方最佳实践的翻译，原文地址 本篇中提到的工具，好像已经有一段时间没有维护过了。。不确定现在的版本是否还能继续使用，也不确定">
+
+
+<meta itemprop="datePublished" content="2018-11-16T09:52:00&#43;08:00" />
+<meta itemprop="dateModified" content="2018-11-16T09:52:00&#43;08:00" />
+<meta itemprop="wordCount" content="2025">
+
+
+
+<meta itemprop="keywords" content="Unity3D," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Unity_optimization_2"/>
+<meta name="twitter:description" content="本篇是对Unity官方最佳实践的翻译，原文地址 本篇中提到的工具，好像已经有一段时间没有维护过了。。不确定现在的版本是否还能继续使用，也不确定"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Unity_optimization_2</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-11-16 </span>
+        <div class="post-category">
+            
+              <a href="/categories/translate/"> translate </a>
+            
+          </div>
+        
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#内存">内存</a>
+<ul>
+<li><a href="#profiling内存消耗">Profiling内存消耗</a>
+<ul>
+<li><a href="#发现重复贴图">发现重复贴图</a>
+<ul>
+<li><a href="#assetbundle和资源重复">AssetBundle和资源重复</a></li>
+</ul></li>
+<li><a href="#检查图像缓存-图像效果和rendertexture内存使用">检查图像缓存、图像效果和RenderTexture内存使用</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      
+
+<blockquote>
+<p>本篇是对Unity官方最佳实践的翻译，<a href="https://docs.unity3d.com/Manual/BestPracticeUnderstandingPerformanceInUnity2.html">原文地址</a></p>
+
+<p>本篇中提到的工具，好像已经有一段时间没有维护过了。。不确定现在的版本是否还能继续使用，也不确定现在内置的Profiler能否完全替代它，以后在实际项目中尝试一下。不过不是我说，老哥你这个工具解析一次花的时间也太长了吧。。真的实用吗。。。</p>
+</blockquote>
+
+<h1 id="内存">内存</h1>
+
+<p>内存消耗是一个关键的性能指标，在内存资源受限的平台（如低端移动设备）上尤其重要。</p>
+
+<h2 id="profiling内存消耗">Profiling内存消耗</h2>
+
+<p>在Unity中分析内存问题最好的工具是在Unity的Bitbucket上的<a href="https://bitbucket.org/Unity-Technologies/memoryprofiler">开源内存可视化工具</a>。集成这个工具非常简单，只需要下载链接中的代码然后放到项目的Editor目录下。</p>
+
+<p>这个工具可以在任何Unity 5.3以后的版本使用。当挂载到使用IL2CPP构建的应用上以后，它可以捕获有关原生和托管内存的大量信息。</p>
+
+<p>想使用这个工具，只需要简单的把项目用IL2CPP进行构建，然后发布到合适的设备上。挂载上Unity常规的CPU profiler，然后打开Menory Profiler窗口（菜单：Window &gt; MemoryProfilerWindow），然后选择<code>Take Snapshot</code>。</p>
+
+<p>在设备上的应用会暂停一下来采集数据并传输到Unity Editor中。然后，Unity Editor会暂停来解析收到的数据；这可能会需要大量的时间。对于一些内存集中的应用，一次追踪可能要花费10-30分钟来解析。</p>
+
+<p>在这个解析和加载操作中，推荐你有足够的耐心。。。</p>
+
+<p><img src="/img/UnderstandingPerformanceinUnity-MemorySection_image_0.jpg" alt="image0" /></p>
+
+<p>上面的截图来自运行在iOS设备上的标准资源场景，体现出超过3/4的内存使用可以归结于4个非常大的贴图，全都和飞机的机身有关。</p>
+
+<p>这个视图可以被缩放。可以点击每个方块来查看更多的信息。</p>
+
+<h3 id="发现重复贴图">发现重复贴图</h3>
+
+<p>一个常见的内存问题是内存中的重复资源。由于贴图经常是项目中最占内存的资源，贴图重复是Unity项目中最常见的内存问题。</p>
+
+<p>重复的资源可以通过定位两个具有同样类型和大小的objects来发现，其表现出是从同一个资源加载而来的。在新的内存Profiler工具的详情面板中，对于疑似相同的objects检查它们的Name和InstanceID字段。</p>
+
+<p>Name字段是基于object所加载的资源文件名；通常，这是不带文件路径和扩展名的文件名。InstanceID字段表示Unity运行时分配的内部标识符；这个数字在单次Unity运行期间是唯一的。</p>
+
+<p><img src="/img/UnderstandingPerformanceinUnity-MemorySection_image_1.png" alt="image0" /></p>
+
+<p>上面的截图展示了这个问题的一个例子。截图的左右两边分别来自5.4版的内存Profiler的详情面板。截图中展示的资源是在内存中分别加载的两个贴图。这两个贴图有同样的名字和大小，表明他们可能是重复的。通过检查项目的Assets目录，可以发现只有一个资源叫做<code>wood-floorboards-texture</code>，更加明显的指出这是个资源重复。</p>
+
+<p>在内存中每个独立的UnityEngine.Object都有一个唯一的instance ID，在object被创建是赋值给它。鉴于这两个贴图有不同的instance ID，很明显它们表示在内存中属于不同的贴图实例。</p>
+
+<p>由于文件名和资源大小一样，但是instance ID不同，可以确定这两个objects表示同一个贴图在内存中产生了重复（注：如果项目中有同样的贴图名，这个判断就不是绝对的，但是在文件大小一致的情况下，可以更加肯定这个判断）。</p>
+
+<h4 id="assetbundle和资源重复">AssetBundle和资源重复</h4>
+
+<p>在内存中出现贴图和资源的重复最常见的原因是不恰当的卸载AssetBundle。可以参考<a href="http://unity3d.com/learn/tutorials/topics/best-practices/guide-assetbundles-and-resources?playlist=30089">AssetBundle最佳实践</a>来获取更多信息。关键章节是<a href="http://unity3d.com/learn/tutorials/topics/best-practices/assetbundle-usage-patterns?playlist=30089">管理加载的资源</a>。（译注：之前也翻译过这一系列文章）</p>
+
+<h3 id="检查图像缓存-图像效果和rendertexture内存使用">检查图像缓存、图像效果和RenderTexture内存使用</h3>
+
+<p>在内存视图中，也可以把需要提供给图像效果和RenderTexture物体的渲染缓存进行可视化。（译注：这里还不太明白这几个概念都是什么。。待我慢慢看相关的东西。。）</p>
+
+<p><img src="/img/UnderstandingPerformanceinUnity-MemorySection_image_2.png" alt="image0" /></p>
+
+<p>上面的截图展示了一个包含多个Unity的Cinematic图像效果的简单场景。图像效果分配了临时的渲染缓存来进行相应的计算；更详细的，Bloom效果分配了多个大小递减的缓存。由于Retina iOS设备的高分辨率，这些临时的缓存占用了比项目其他内存之和大得多的内存。</p>
+
+<p>考虑一个渲染分辨率在2048x1536的iPad Air 2-这已经超过了通常发布在主机和PC上的1080p的分辨率，但仅仅运行在一个平板设备上。根据不同的缓存格式，一个全屏的临时渲染缓存就会占用了整整24或36MB的内存。如果把渲染缓存的像素尺寸减半，就可以减少75%的空间。这通常并不会明显的降低渲染结果的视觉质量。</p>
+
+<p>一种优化图像效果占用渲染缓存和其他GPU资源的方法是一次性创建一个“超级”图像效果来进行所有的不同的计算。在使用Unity 5.5或以后的版本时，可以使用新的<a href="https://github.com/Unity-Technologies/PostProcessing">UberFX</a>（可以在<a href="https://github.com/Unity-Technologies/PostProcessing">github</a>获取；这个包提供了一种可配置的“超级”图像效果来执行Cinematic提供的所有操作，这样比单独进行每个图像效果计算使用更少的内存）。</p>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">cliff</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2018-11-16</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/unity3d/">Unity3D</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/unity_optimization_3/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Unity_optimization_3</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+          <a class="next" href="/post/unity_optimization_1/">
+            <span class="next-text nav-default">Unity_optimization_1</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="https://cloudycliff.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">cliff</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
