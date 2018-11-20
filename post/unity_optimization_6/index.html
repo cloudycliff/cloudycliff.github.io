@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>[译]Unity优化最佳实践6-字符串和文本 - Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="cliff" />
+  <meta name="description" content="本篇是对Unity官方最佳实践的翻译，原文地址 字符串和文本 操作字符串和文本是Unity项目中常见的性能问题来源。在C#中，所有的字符串都是不" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.49.2" />
+
+
+<link rel="canonical" href="https://cloudycliff.github.io/post/unity_optimization_6/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="[译]Unity优化最佳实践6-字符串和文本" />
+<meta property="og:description" content="本篇是对Unity官方最佳实践的翻译，原文地址 字符串和文本 操作字符串和文本是Unity项目中常见的性能问题来源。在C#中，所有的字符串都是不" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cloudycliff.github.io/post/unity_optimization_6/" /><meta property="article:published_time" content="2018-11-19T16:34:02&#43;08:00"/>
+<meta property="article:modified_time" content="2018-11-19T16:34:02&#43;08:00"/>
+
+<meta itemprop="name" content="[译]Unity优化最佳实践6-字符串和文本">
+<meta itemprop="description" content="本篇是对Unity官方最佳实践的翻译，原文地址 字符串和文本 操作字符串和文本是Unity项目中常见的性能问题来源。在C#中，所有的字符串都是不">
+
+
+<meta itemprop="datePublished" content="2018-11-19T16:34:02&#43;08:00" />
+<meta itemprop="dateModified" content="2018-11-19T16:34:02&#43;08:00" />
+<meta itemprop="wordCount" content="2774">
+
+
+
+<meta itemprop="keywords" content="Unity3D," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="[译]Unity优化最佳实践6-字符串和文本"/>
+<meta name="twitter:description" content="本篇是对Unity官方最佳实践的翻译，原文地址 字符串和文本 操作字符串和文本是Unity项目中常见的性能问题来源。在C#中，所有的字符串都是不"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">[译]Unity优化最佳实践6-字符串和文本</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-11-19 </span>
+        <div class="post-category">
+            
+              <a href="/categories/translate/"> translate </a>
+            
+          </div>
+        
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#字符串和文本">字符串和文本</a>
+<ul>
+<li><a href="#字符集强制转换和按序比较">字符集强制转换和按序比较</a></li>
+<li><a href="#低效的内置字符串api">低效的内置字符串API</a></li>
+<li><a href="#正则表达式">正则表达式</a></li>
+<li><a href="#xml-json和其他长文本解析">XML，JSON和其他长文本解析</a>
+<ul>
+<li><a href="#选择1-在构建时解析">选择1:在构建时解析</a></li>
+<li><a href="#选择2-切分和懒加载">选择2:切分和懒加载</a></li>
+<li><a href="#选择3-线程">选择3:线程</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      
+
+<blockquote>
+<p>本篇是对Unity官方最佳实践的翻译，<a href="https://docs.unity3d.com/Manual/BestPracticeUnderstandingPerformanceInUnity5.html">原文地址</a></p>
+</blockquote>
+
+<h1 id="字符串和文本">字符串和文本</h1>
+
+<p>操作字符串和文本是Unity项目中常见的性能问题来源。在C#中，所有的字符串都是不可变的。对字符串的任何修改都会导致分配一个全新的字符串。这样做的代价相对较高，并且对大字符串、大数据集或在高频的循环中重复进行字符串连接可能会造成性能问题。</p>
+
+<p>更进一步，由于N个字符串的拼接需要生成N-1个中间字符串，连续的拼接也可能是造成托管内存压力的主要原因。</p>
+
+<p>如果必须在高频循环或每帧对字符串进行连接，使用StringBuilder来进行实际的连接操作。还可以复用这个StringBuilder来进一步降低不必要的内存分配。</p>
+
+<p>微软维护了一个关于C#中字符串的最佳实践列表，可以在<a href="https://msdn.microsoft.com/en-us/library/dd465121(v=vs.110).aspx">MSDN页面</a>找到。</p>
+
+<h2 id="字符集强制转换和按序比较">字符集强制转换和按序比较</h2>
+
+<p>在和字符串相关的代码中，一个关键的性能问题是无心的使用了缓慢的默认字符串API。这些API是为商业应用构建的，它们会尝试根据文本中的字符处理来自不同文化和语言规则的字符串。</p>
+
+<p>举个例子，下面的示例代码当运行在US-English字符集时返回true，但是在很多欧洲字符集下返回false。（注意：Unity 5.3和5.4版本中，Unity脚本运行时总是运行在en-US字符集下）</p>
+
+<pre><code class="language-C#">    String.Equals(&quot;encyclopedia&quot;, “encyclopædia”);
+</code></pre>
+
+<p>对于大部分Unity项目来说，这是完全没有必要的。使用按序比较类型会快大概10倍，它使用类似C和C++的比较方式：简单的按序对比字符串中字节的值，而并不关心这个字节所代表的字符是什么。</p>
+
+<p>转换成按序比较字符串很简单，只要把<code>StringComparison.Ordinal</code>作为最后一个参数传入<code>String.Equals</code>：</p>
+
+<pre><code class="language-C#">myString.Equals(otherString, StringComparison.Ordinal);
+</code></pre>
+
+<h2 id="低效的内置字符串api">低效的内置字符串API</h2>
+
+<p>在切换成按序比较之外，一些C#的字符串API也是十分低效的。包括<code>String.Format</code>，<code>String.StartsWith</code>和<code>String.EndsWith</code>。<code>String.Format</code>不太容易被代替，但是低效的字符串比较方法可以被很容易的优化。</p>
+
+<p>尽管微软推荐在不需要考虑字符集转换的情况下，把<code>StringComparison.Ordinal</code>作为参数传入字符串比较函数，Unity的基准测试表明，这样做带来的优化比使用自定义的实现带来的影响小很多。</p>
+
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>100k短字符串消耗的时间（ms）</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>String.StartsWith</code>，默认字符集</td>
+<td>137</td>
+</tr>
+
+<tr>
+<td><code>String.EndsWith</code>，默认字符集</td>
+<td>542</td>
+</tr>
+
+<tr>
+<td><code>String.StartsWith</code>，按序</td>
+<td>115</td>
+</tr>
+
+<tr>
+<td><code>String.EndsWith</code>，按序</td>
+<td>34</td>
+</tr>
+
+<tr>
+<td>自定义<code>StartsWith</code></td>
+<td>4.5</td>
+</tr>
+
+<tr>
+<td>自定义<code>EndsWith</code></td>
+<td>4.5</td>
+</tr>
+</tbody>
+</table>
+
+<p><code>String.StartsWith</code>和<code>String.EndsWith</code>可以被简单的手写代码版本代替，和下面的示例类似：</p>
+
+<pre><code class="language-C#">    public static bool CustomEndsWith(string a, string b) {
+        int ap = a.Length - 1;
+        int bp = b.Length - 1;
+
+        while (ap &gt;= 0 &amp;&amp; bp &gt;= 0 &amp;&amp; a [ap] == b [bp]) {
+            ap--;
+            bp--;
+        }
+        return (bp &lt; 0 &amp;&amp; a.Length &gt;= b.Length) || 
+
+                (ap &lt; 0 &amp;&amp; b.Length &gt;= a.Length);
+    }
+
+    public static bool CustomStartsWith(string a, string b) {
+        int aLen = a.Length;
+        int bLen = b.Length;
+        int ap = 0; int bp = 0;
+
+        while (ap &lt; aLen &amp;&amp; bp &lt; bLen &amp;&amp; a [ap] == b [bp]) {
+        ap++;
+        bp++;
+        }
+
+        return (bp == bLen &amp;&amp; aLen &gt;= bLen) || 
+
+                (ap == aLen &amp;&amp; bLen &gt;= aLen);
+    }
+
+</code></pre>
+
+<h2 id="正则表达式">正则表达式</h2>
+
+<p>虽然正则表达式是匹配和处理字符串的有力工具，它们的性能可能非常的低效。进一步，由于C#库对正则表达式的实现方式，即使简单的boolean查询<code>IsMatch</code>也会在底层分配大量的临时数据结构。这个临时的托管内存波动被认为是不可接受的，除非是在初始化阶段。</p>
+
+<p>如果必须要使用正则表达式，强烈推荐不要使用接受一个字符串正则表达式为参数的静态方法<code>Regex.Match</code>或<code>Regex.Replace</code>。这些方法动态的编译正则表达式，并且不会缓存生成的对象。</p>
+
+<p>下面是一行看似无害的示例代码：</p>
+
+<pre><code class="language-C#">Regex.Match(myString, &quot;foo&quot;);
+</code></pre>
+
+<p>然而，每次它被执行，都会生成5KB的垃圾。一个简单的重构会消除大部分的垃圾：</p>
+
+<pre><code class="language-C#">var myRegExp = new Regex(&quot;foo&quot;);
+
+myRegExp.Match(myString);
+</code></pre>
+
+<p>在这个例子中，每次调用<code>myRegExp.Match</code>“仅仅”会产生320字节的垃圾。尽管这对于一个简单的匹配操作来说还是很多，它对于之前的例子是一个很大的改进。</p>
+
+<p>因此，如果正则表达式是一个不变的字符串，把它作为正则对象构造函数的参数传入以进行预编译是更高效的。这些预编译的正则也可以被复用。</p>
+
+<h2 id="xml-json和其他长文本解析">XML，JSON和其他长文本解析</h2>
+
+<p>解析文本通常是加载过程中最重的操作。在某些情况下，用于解析文本上的时间可能会超过用于加载和初始化资源的时间。</p>
+
+<p>这种情况的原因依赖于使用的解析方法。C#的内置XML解析器非常灵活，但是也因此，对于特定的数据结构并不高效。</p>
+
+<p>很多第三方解析器都基于反射。虽然反射在开发过程中是个非常好的选择（因为它使得解析器能够快速适应数据结构的变化），总所周知它也很缓慢。</p>
+
+<p>Unity通过其内置的<a href="https://docs.unity3d.com/ScriptReference/JsonUtility.html">JSONUtility</a>API引入了部分解决方案，它为Unity的读写JSON的序列化系统提供了接口。在大部分基准测试中，它比纯C#的解析器要快，但是它和其他Unity序列化接口一样有所限制-在没有额外代码实现的情况下，它不能序列化很多复杂的数据结构，例如字典（参考<a href="https://docs.unity3d.com/ScriptReference/ISerializationCallbackReceiver.html">ISerializationCallbackReceiver</a>接口来简单的为Unity序列化过程添加转换复杂数据结构的必要的处理）。</p>
+
+<p>在遇到文本数据解析引起的性能问题时，考虑下面三种替代方案。</p>
+
+<h3 id="选择1-在构建时解析">选择1:在构建时解析</h3>
+
+<p>避免文本解析消耗最好的办法是完全消除在运行时解析的情况。通常情况下，这意味着在某个构建步骤中把文本数据“烘焙”到二进制格式中。</p>
+
+<p>大部分采用这个方法的开发者把他们的数据转移到继承自ScriptableObject的类中，然后通过AssetBundle发布。在油管上的<a href="https://www.youtube.com/watch?v=VBA1QCoEAX4">Richard Fine’s Unite 2016 talk</a>演讲提供了关于使用ScriptableObject的一个绝佳的讨论。</p>
+
+<p>这个策略提供了最好的性能，但是只适用于不需要动态生成的数据。这最适用于游戏设计参数及其他内容。</p>
+
+<h3 id="选择2-切分和懒加载">选择2:切分和懒加载</h3>
+
+<p>第二个可行方案是把要解析的数据拆分成小块。在拆分后，解析数据的消耗可以被分散到多个帧。理想情况下，识别出用户需要的部分并只加载这些部分。</p>
+
+<p>一个简单的例子：如果项目是一个平台游戏，没必要把所有关卡的数据序列化到一个大的文件中。数据可以被按关卡拆分成单独的资源，或者按照关卡里的区域拆分，这样只有在玩家靠近这些区域时才需要解析这些数据。</p>
+
+<p>尽管这听起来很简单，实际上这需要投入可观的精力在工具代码上，还可能需要重新组织代码结构。</p>
+
+<h3 id="选择3-线程">选择3:线程</h3>
+
+<p>对于解析成纯C#对象的数据，且不需要Unity API参与的情况下，可以把解析操作转移到工作线程中进行。</p>
+
+<p>这个选择对于有多个CPU核心的平台可能很有效（注意：iOS设备最多有2个核心。大部分Android有2-4个。这个技术对于构建PC和主机目标更有效。译注：现代的手机已经有更多的核心了）。不过，这要求更小心的编码以避免产生死锁和竞争。</p>
+
+<p>项目中实现多线程，通常会采用C#内置的<a href="https://msdn.microsoft.com/en-us/library/system.threading.thread(v=vs.110).aspx">Thread</a>和<a href="https://msdn.microsoft.com/en-us/library/system.threading.threadpool(v=vs.110).aspx">ThreadPool</a>类来管理工作线程，并配合标准C#同步类使用。</p>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">cliff</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2018-11-19</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/unity3d/">Unity3D</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/unity_optimization_7/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">[译]Unity优化最佳实践7-通用优化</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+          <a class="next" href="/post/unity_optimization_5/">
+            <span class="next-text nav-default">[译]Unity优化最佳实践5-理解托管堆</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="https://cloudycliff.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">cliff</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

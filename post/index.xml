@@ -6,10 +6,37 @@
     <description>Recent content in Posts on Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 16 Nov 2018 20:54:02 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 19 Nov 2018 20:11:57 +0800</lastBuildDate>
     
 	<atom:link href="https://cloudycliff.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[译]Unity优化最佳实践8-特殊优化</title>
+      <link>https://cloudycliff.github.io/post/unity_optimization_8/</link>
+      <pubDate>Mon, 19 Nov 2018 20:11:57 +0800</pubDate>
+      
+      <guid>https://cloudycliff.github.io/post/unity_optimization_8/</guid>
+      <description>本篇是对Unity官方最佳实践的翻译，原文地址 特殊优化 上一章介绍了一些对所有项目适用的优化，本章介绍的优化不应该在没有profile数据支持</description>
+    </item>
+    
+    <item>
+      <title>[译]Unity优化最佳实践7-通用优化</title>
+      <link>https://cloudycliff.github.io/post/unity_optimization_7/</link>
+      <pubDate>Mon, 19 Nov 2018 17:50:13 +0800</pubDate>
+      
+      <guid>https://cloudycliff.github.io/post/unity_optimization_7/</guid>
+      <description>本篇是对Unity官方最佳实践的翻译，原文地址 通用优化 有多少性能问题的原因，就有多少优化代码的方式。通常，强烈建议开发者在尝试进行CPU优化</description>
+    </item>
+    
+    <item>
+      <title>[译]Unity优化最佳实践6-字符串和文本</title>
+      <link>https://cloudycliff.github.io/post/unity_optimization_6/</link>
+      <pubDate>Mon, 19 Nov 2018 16:34:02 +0800</pubDate>
+      
+      <guid>https://cloudycliff.github.io/post/unity_optimization_6/</guid>
+      <description>本篇是对Unity官方最佳实践的翻译，原文地址 字符串和文本 操作字符串和文本是Unity项目中常见的性能问题来源。在C#中，所有的字符串都是不</description>
+    </item>
     
     <item>
       <title>[译]Unity优化最佳实践5-理解托管堆</title>
